@@ -3,28 +3,25 @@
 # bin/compile <build-dir> <cache-dir> <env-dir>
 
 # fail hard
-#set -o pipefail
+set -o pipefail
 # fail harder
-#set -eu
+set -eu
 # move hidden files too, just in case
 shopt -s dotglob
 
+# Download packages at http://security.ubuntu.com/ubuntu/pool/main/m/mysql-8.0/
 PKG="mysql-client-core-8.0_8.0.22-0ubuntu0.20.04.3_amd64.deb"
-PKG_URL="http://security.ubuntu.com/ubuntu/pool/main/m/mysql-8.0/$PKG"
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
+CRT="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
-echo "-----> MySQL Download client package at $PKG_URL"
-cd $BUILD_DIR
-mkdir mysql
-cd mysql
-wget $PKG_URL
-
-echo "-----> MySQL Install"
+echo "-----> MySQL Install $PKG"
 mkdir -p $BUILD_DIR/.heroku/mysql
-dpkg -x $PKG $BUILD_DIR/.heroku/mysql
+
+echo $CRT
+echo $CRT/../deb/$PKG
+
+dpkg -x $CRT/../deb/$PKG $BUILD_DIR/.heroku/mysql
 
 echo "-----> MySQL Done 🎉"
-
-exit 0
