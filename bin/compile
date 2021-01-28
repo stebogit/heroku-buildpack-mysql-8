@@ -18,10 +18,6 @@ CRT="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 
 echo "-----> MySQL Install $PKG"
 mkdir -p $BUILD_DIR/.heroku/mysql
-
-echo $CRT
-echo $CRT/../deb/$PKG
-
 dpkg -x $CRT/../deb/$PKG $BUILD_DIR/.heroku/mysql
 
 echo "-----> MySQL Done 🎉"
