@@ -20,4 +20,13 @@ echo "-----> MySQL Install $PKG"
 mkdir -p $BUILD_DIR/.heroku/mysql
 dpkg -x $CRT/../deb/$PKG $BUILD_DIR/.heroku/mysql
 
+echo "-----> MySQL set PATH"
+mkdir -p $BUILD_DIR/.profile.d
+cat > $BUILD_DIR/.profile.d/mysql.sh <<'EOF'
+export PATH="/app/.heroku/mysql/usr/bin:$PATH"
+EOF
+chmod +x $BUILD_DIR/.profile.d/mysql.sh
+
 echo "-----> MySQL Done 🎉"
+
+
