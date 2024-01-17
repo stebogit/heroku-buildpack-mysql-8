@@ -20,10 +20,9 @@ mysqldump  Ver 8.0.22-0ubuntu0.20.04.3 for Linux on x86_64 ((Ubuntu))
 
 ## Usage
 
-- via Heroku CLI:
+- via Heroku [CLI](https://devcenter.heroku.com/articles/buildpacks#using-a-third-party-buildpack):
    ```
-   $ heroku buildpacks:add https://github.com/stebogit/heroku-buildpack-mysql-8
-   $ git push heroku master
+   $ heroku buildpacks:set stebogit/heroku-buildpack-mysql-8
    ```
 
 - or from the dashboard of your project
