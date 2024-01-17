@@ -9,8 +9,16 @@ set -eu
 # move hidden files too, just in case
 shopt -s dotglob
 
+# https://www.redswitches.com/blog/check-ubuntu-version/#Check-Ubuntu-Version-via-the-Command-Line
+OS_VERSION="$(lsb_release -rs)"
+
 # Download packages at http://security.ubuntu.com/ubuntu/pool/main/m/mysql-8.0/
-PKG="mysql-client-core-8.0_8.0.22-0ubuntu0.20.04.3_amd64.deb"
+PKG="mysql-client-core-8.0_8.0.35-0ubuntu0.22.04.1_amd64.deb" # for Ubuntu 22.04 LTS
+if [ "$OS_VERSION" = "20.04" ]; then
+   # for Ubuntu 20.04 LTS
+   PKG="mysql-client-core-8.0_8.0.22-0ubuntu0.20.04.3_amd64.deb"
+fi
+
 BUILD_DIR=$1
 CACHE_DIR=$2
 ENV_DIR=$3
@@ -28,5 +36,4 @@ EOF
 chmod +x $BUILD_DIR/.profile.d/mysql.sh
 
 echo "-----> MySQL Done 🎉"
-
 
