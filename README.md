@@ -6,23 +6,23 @@ your Dyno.
 
 ```
 $ mysql --version
-mysql  Ver 8.0.22-0ubuntu0.20.04.3 for Linux on x86_64 ((Ubuntu))
+mysql  Ver 8.0.35-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
 
 $ mysqldump --version
-mysqldump  Ver 8.0.22-0ubuntu0.20.04.3 for Linux on x86_64 ((Ubuntu))
+mysqldump  Ver 8.0.35-0ubuntu0.22.04.1 for Linux on x86_64 ((Ubuntu))
 ```
 
 ## Versions
 
-* MySQL: `8.0` for `heroku-20` stack
+* MySQL: `8.0` for `heroku-22` or `heroku-20` stacks
 
 > **Note:** it might have issues with different Heroku stack versions
 
 ## Usage
 
-- via Heroku [CLI](https://devcenter.heroku.com/articles/buildpacks#using-a-third-party-buildpack):
+- via [Heroku CLI](https://devcenter.heroku.com/articles/buildpacks#using-a-third-party-buildpack):
    ```
-   $ heroku buildpacks:set stebogit/heroku-buildpack-mysql-8#heroku-20
+   $ heroku buildpacks:set stebogit/heroku-buildpack-mysql-8
    ```
 
 - or from the dashboard of your project
@@ -32,7 +32,7 @@ mysqldump  Ver 8.0.22-0ubuntu0.20.04.3 for Linux on x86_64 ((Ubuntu))
 
 ```
 -----> MySQL Client app detected
------> MySQL Install mysql-client-core-8.0_8.0.22-0ubuntu0.20.04.3_amd64.deb
+-----> MySQL Install mysql-client-core-8.0_8.0.35-0ubuntu0.22.04.1_amd64.deb
 -----> MySQL set PATH
 -----> MySQL Done 🎉
 ```
